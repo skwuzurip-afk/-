@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Секретный замочек для Ани 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Marck+Script&display=swap');
+:root{--pink:#ff4fa0;--hot:#f00078;--coral:#ff637c;--ink:#8d315d}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--ink);font-family:'Comfortaa',system-ui,sans-serif;background:linear-gradient(135deg,#ffe8ef 0%,#fff4f7 50%,#fff9e9 100%);display:grid;place-items:center;padding:30px 16px}
+.scene{width:min(100%,760px);position:relative;z-index:1;text-align:center;padding:20px 0 34px}
+.eyebrow{letter-spacing:.32em;font-size:13px;color:#ff55a0;margin:0 0 10px}
+h1{font-family:'Marck Script',cursive;font-weight:400;color:#ec0077;font-size:clamp(34px,6vw,49px);line-height:1.12;margin:0 0 8px}
+.subtitle{font-size:15px;line-height:1.7;color:#ff527b;margin:0 auto 30px;max-width:440px}
+.panel{width:min(100%,400px);margin:auto;padding:25px 24px 24px;background:rgba(255,255,255,.72);border:1px solid #ffc3df;border-radius:26px;box-shadow:0 20px 35px #e96a9a20;backdrop-filter:blur(8px)}
+.panel-label{font-size:12px;letter-spacing:.06em;color:#ff527b;margin:0 0 17px}
+.date-hint{font-family:'Marck Script',cursive;color:#ffc3d0;font-size:30px;margin-bottom:22px}
+.date-fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.date-select-wrap{display:block;position:relative;min-width:0}
+.date-fields select{appearance:none;-webkit-appearance:none;font:500 13px 'Comfortaa',sans-serif;text-align:center;text-align-last:center;color:#ef287c;width:100%;min-width:0;border:1px solid #ffc4df;border-radius:12px;background:linear-gradient(180deg,#fff,#fff8fc);padding:13px 17px 13px 5px;outline:none;box-shadow:0 3px 5px #8e24500d;cursor:pointer;transition:border-color .25s,box-shadow .25s,background .25s,transform .2s}
+.date-fields select:focus{border-color:#ff5da5;box-shadow:0 0 0 3px #ff83b522,0 5px 12px #ff83b51c;background:#fff;transform:translateY(-1px)}
+.date-fields select:valid{color:#ef287c}
+.date-fields select option{color:#8d315d;background:#fff}
+.select-arrow{position:absolute;right:7px;top:50%;transform:translateY(-58%);font-size:16px;color:#f17caf;pointer-events:none;transition:transform .2s}
+.date-select-wrap:focus-within .select-arrow{transform:translateY(-35%) rotate(180deg)}
+.primary{width:100%;border:0;border-radius:999px;padding:14px 16px;margin-top:23px;background:linear-gradient(100deg,#fa59b4,#ff5f7e);color:#fff;font:700 15px 'Comfortaa',sans-serif;box-shadow:0 9px 16px #f34f9838;cursor:pointer;transition:transform .2s,filter .2s}
+.primary:hover{transform:translateY(-2px);filter:saturate(1.08)}
+.error{min-height:20px;margin:12px 0 0;color:#e92b68;font-size:12px;line-height:1.5}
+.hidden{display:none!important}
+.floaty{position:fixed;z-index:0;pointer-events:none;user-select:none;animation:rise linear infinite;opacity:.9;filter:drop-shadow(0 5px 4px #ed6b9720)}
+@keyframes rise{0%{transform:translateY(115vh) rotate(-15deg);opacity:0}12%{opacity:.9}85%{opacity:.8}100%{transform:translateY(-18vh) rotate(18deg);opacity:0}}
+.gift-stage{position:relative;min-height:310px;display:grid;place-items:center;margin-top:4px}
+.gift{position:relative;width:220px;height:155px;transform:rotate(-3deg);filter:drop-shadow(0 16px 12px #dc639330);animation:giftBob 2.8s ease-in-out infinite;cursor:pointer;transition:transform .3s}
+@keyframes giftBob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-9px) rotate(2deg)}}
+.box-base{position:absolute;left:15px;bottom:0;width:190px;height:118px;border-radius:10px 10px 15px 15px;background:linear-gradient(135deg,#ff9ac9,#ff6f9c);border:2px solid #fff0f7}
+.box-lid{position:absolute;left:4px;top:23px;width:212px;height:38px;border:2px solid #fff1f7;border-radius:10px;background:linear-gradient(100deg,#ffb5d8,#ff7fa9);z-index:2}
+.ribbon-v{position:absolute;z-index:3;left:96px;top:23px;width:29px;height:132px;background:linear-gradient(90deg,#fff1a6,#ffe26d,#fff0a0);border-radius:4px}
+.ribbon-h{position:absolute;z-index:4;left:4px;top:27px;width:212px;height:22px;background:#ffe88b;border-radius:5px}
+.bow{position:absolute;z-index:5;left:86px;top:0;width:50px;height:35px}
+.bow:before,.bow:after{content:"";position:absolute;width:28px;height:25px;background:#ff4e87;border:2px solid #ffd5e6;border-radius:90% 15% 90% 15%;transform:rotate(25deg);left:0;top:0}
+.bow:after{left:22px;transform:scaleX(-1) rotate(25deg)}
+.gift-prompt{font-weight:700;color:#f32985;letter-spacing:.08em;animation:blink 1s ease-in-out infinite;cursor:pointer;margin-top:12px}
+@keyframes blink{0%,100%{opacity:1;text-shadow:0 0 0 #ff74b5}50%{opacity:.35;text-shadow:0 0 12px #ff74b5}}
+.bird-wrap{position:absolute;left:-150px;top:40px;width:120px;height:95px;opacity:0;z-index:4}
+.bird-wrap.fly{animation:birdFlight 2.7s cubic-bezier(.2,.75,.3,1) forwards}
+.bird-wrap.fly-away{animation:birdFlyAway 2s cubic-bezier(.4,0,1,1) forwards}
+.bird-wrap.stay{opacity:1;transform:translate(calc(50vw - 40px),5px) rotate(0)}
+#message-screen .bird-wrap{left:50%;top:20px;transform:translateX(-50%);opacity:0}
+#message-screen .bird-wrap.stay{opacity:1;transform:translateX(-50%) rotate(0)}
+@keyframes birdFlight{0%{opacity:0;transform:translate(-10px,40px) rotate(-8deg)}12%{opacity:1}75%{transform:translate(calc(50vw - 40px),-20px) rotate(4deg)}100%{opacity:1;transform:translate(calc(50vw - 40px),5px) rotate(0)}}
+@keyframes birdFlyAway{0%{opacity:1;transform:translateX(-50%) rotate(0)}100%{opacity:0;transform:translateX(calc(50vw + 150px)) translateY(-100px) rotate(15deg)}}
+.bird{position:absolute;left:15px;top:7px;width:75px;height:54px}
+.bird-body{position:absolute;left:17px;top:15px;width:43px;height:30px;background:linear-gradient(135deg,#fff,#ffdaec);border:2px solid #f4a0c6;border-radius:60% 50% 50% 55%;transform:rotate(-10deg)}
+.bird-head{position:absolute;left:45px;top:3px;width:27px;height:27px;border-radius:50%;background:#fff4fa;border:2px solid #f4a0c6}
+.bird-eye{position:absolute;right:6px;top:8px;width:4px;height:4px;background:#72334d;border-radius:50%}
+.beak{position:absolute;left:69px;top:15px;width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:10px solid #ffb94d}
+.wing{position:absolute;left:25px;top:15px;width:26px;height:20px;border-radius:80% 15% 80% 15%;background:#ff9fc8;border:2px solid #f4a0c6;transform-origin:top right;animation:flap .25s ease-in-out infinite alternate}
+@keyframes flap{to{transform:rotate(-45deg) scale(.9)}}
+.tail{position:absolute;left:12px;top:29px;width:20px;height:17px;background:#ffb2d1;clip-path:polygon(100% 0,0 0,30% 100%,55% 55%,100% 100%)}
+.legs{position:absolute;left:42px;top:42px;width:14px;height:13px;border-left:2px solid #ffb24f;border-right:2px solid #ffb24f;transform:rotate(8deg)}
+.note-rope{position:absolute;left:52px;top:54px;width:2px;height:20px;background:#d69d65;transform:rotate(-8deg)}
+.tiny-gift{position:absolute;left:38px;top:69px;width:36px;height:25px;background:#ffb1d3;border:1px solid white;border-radius:4px;box-shadow:0 3px 5px #a04c681c}
+.tiny-gift:before{content:"";position:absolute;left:14px;top:0;width:7px;height:25px;background:#ffe990}
+.tiny-gift:after{content:"";position:absolute;left:0;top:8px;width:36px;height:5px;background:#ffe990}
+.card-open{width:min(100%,500px);margin:0 auto;background:#fffdfd;border:1px solid #ffc6df;border-radius:24px;padding:28px 26px;box-shadow:0 18px 45px #e96a9a20;animation:appear .65s ease both}
+@keyframes appear{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.card-open h2{font-family:'Marck Script',cursive;color:#ed1680;font-size:35px;font-weight:400;margin:0 0 15px}
+.message{font-size:14px;line-height:1.9;color:#854361;white-space:pre-wrap;text-align:left}
+.small-note{font-size:11px;color:#d58aaa;margin-top:18px}
+@media(max-width:480px){.scene{padding-top:12px}.panel{padding:23px 17px}.subtitle{font-size:13px}.gift-stage{min-height:285px}.card-open{padding:24px 20px}.message{font-size:13px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="decorations" aria-hidden="true"></div>
+<main class="scene">
+  <section id="lock-screen">
+    <p class="eyebrow">СЕКРЕТНЫЙ ЗАМОЧЕК</p>
+    <h1>Привет, Анечка! 💕</h1>
+    <p class="subtitle">Прежде чем открыть подарок, вспомни одну особенную дату...</p>
+    <div class="panel">
+      <p class="panel-label">ДАТА ТВОЕГО РОЖДЕНИЯ</p>
+      <div class="date-hint">день · месяц · год</div>
+      <form id="date-form">
+        <div class="date-fields">
+          <label class="date-select-wrap"><select id="day" aria-label="Выбери день" required><option value="" selected disabled>День</option></select><span class="select-arrow">⌄</span></label>
+          <label class="date-select-wrap"><select id="month" aria-label="Выбери месяц" required><option value="" selected disabled>Месяц</option></select><span class="select-arrow">⌄</span></label>
+          <label class="date-select-wrap"><select id="year" aria-label="Выбери год" required><option value="" selected disabled>Год</option></select><span class="select-arrow">⌄</span></label>
+        </div>
+        <button class="primary" type="submit">Открыть замочек 🔒</button>
+        <p class="error" id="error" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+  <section id="delivery-screen" class="hidden">
+    <p class="eyebrow">У ТЕБЯ НОВЫЙ ПОДАРОК</p>
+    <h1>Это тебе, Аня! 💗</h1>
+    <p class="subtitle">Кажется, маленький почтовый друг уже спешит к тебе...</p>
+    <div class="gift-stage">
+      <div class="bird-wrap" id="bird" aria-label="Милая птичка несёт подарок">
+        <div class="bird">
+          <div class="tail"></div><div class="bird-body"></div><div class="wing"></div>
+          <div class="bird-head"><div class="bird-eye"></div></div><div class="beak"></div><div class="legs"></div>
+        </div>
+        <div class="note-rope"></div><div class="tiny-gift"></div>
+      </div>
+      <div id="wrapped-gift" class="gift" role="button" tabindex="0" aria-label="Открыть открытку">
+        <div class="bow"></div><div class="box-base"></div><div class="ribbon-v"></div><div class="box-lid"></div><div class="ribbon-h"></div>
+      </div>
+    </div>
+    <p id="tap-prompt" class="gift-prompt hidden" role="button" tabindex="0">ЖМИ · ЖМИ ✨</p>
+    <p class="small-note">маленький сюрприз, приготовленный специально для тебя</p>
+  </section>
+  <section id="message-screen" class="hidden">
+    <p class="eyebrow">ОТКРЫТКА ДЛЯ ТЕБЯ</p>
+    <div class="card-open">
+      <h2>Анечка, это тебе 💌</h2>
+      <div class="message" id="personal-message">Анечка, ты очень красивая, милая и замечательная девочка 💗🎀 Мне хочется, чтобы ты почаще улыбалась и никогда не забывала, насколько ты прекрасная. Пусть в твоей жизни будет побольше счастливых моментов, искренних улыбок, приятных неожиданностей и людей, рядом с которыми ты можешь быть самой собой 🌸✨
+
+Даже если иногда день не задаётся или настроение совсем не то, помни, что впереди обязательно будут хорошие моменты. Ты заслуживаешь много тепла, заботы и добрых слов. Пусть у тебя исполняются даже самые маленькие желания, а каждый новый день приносит что-нибудь приятное 🧸💕
+
+И пусть эта маленькая открытка хотя бы на несколько минут подарит тебе улыбку. Я хотел сделать для тебя что-то необычное и милое, чтобы ты открыла её и почувствовала немного тепла 💌
+
+Оставайся такой же чудесной , береги свою улыбку и почаще радуйся мелочам. Ты заслуживаешь всего самого хорошего! 💗🌷
+
+С маленьким приветом и большой порцией милоты — специально для тебя 🐦🎁💕</div>
+      <p class="small-note">с теплом и самыми добрыми пожеланиями ✨</p>
+    </div>
+    <div class="bird-wrap" id="bird-message" aria-label="Милая птичка улетает">
+      <div class="bird">
+        <div class="tail"></div><div class="bird-body"></div><div class="wing"></div>
+        <div class="bird-head"><div class="bird-eye"></div></div><div class="beak"></div><div class="legs"></div>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const monthNames = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+for(let day=1;day<=31;day++){const o=document.createElement('option');o.value=String(day);o.textContent=day;$('day').appendChild(o)}
+monthNames.forEach((name,i)=>{const o=document.createElement('option');o.value=String(i+1);o.textContent=name;$('month').appendChild(o)});
+for(let year=2026;year>=1940;year--){const o=document.createElement('option');o.value=String(year);o.textContent=year;$('year').appendChild(o)}
+const decor = ['💗','⭐','🎀','✨','🌸','💕','💫'];
+for(let i=0;i<19;i++){
+  const el=document.createElement('span'); el.className='floaty';
+  el.textContent=decor[Math.floor(Math.random()*decor.length)];
+  el.style.left=(Math.random()*100)+'%';
+  el.style.fontSize=(17+Math.random()*20)+'px';
+  el.style.animationDuration=(10+Math.random()*13)+'s';
+  el.style.animationDelay=(-Math.random()*20)+'s';
+  $('decorations').appendChild(el);
+}
+$('date-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const d=Number.parseInt($('day').value,10);
+  const m=Number.parseInt($('month').value,10);
+  const y=Number.parseInt($('year').value,10);
+
+  // Check the selected date as numeric values, independent of how the browser
+  // represents the select values.
+  if(d===14 && m===10 && y===2006){
+    $('error').textContent='';
+    $('lock-screen').classList.add('hidden');
+    $('delivery-screen').classList.remove('hidden');
+    setTimeout(()=>{$('bird').classList.add('fly')},250);
+    setTimeout(()=>{$('tap-prompt').classList.remove('hidden')},2600);
+  }else{
+    $('error').textContent='Хм, попробуй ещё раз <3 💗';
+    ['day','month','year'].forEach(id=>$(id).style.borderColor='#ff8bb8');
+  }
+});
+
+['day','month','year'].forEach(id=>{
+  $(id).addEventListener('change',()=>{
+    $('error').textContent='';
+    ['day','month','year'].forEach(field=>$(field).style.borderColor='#ffc4df');
+  });
+});
+
+function openCard(){
+  if($('delivery-screen').classList.contains('hidden')) return;
+  $('delivery-screen').classList.add('hidden');
+  $('message-screen').classList.remove('hidden');
+  const birdMessage = $('bird-message');
+  birdMessage.classList.add('stay');
+  setTimeout(()=>{birdMessage.classList.remove('stay');birdMessage.classList.add('fly-away')},1500);
+}
+$('wrapped-gift').addEventListener('click',openCard);
+$('tap-prompt').addEventListener('click',openCard);
+['wrapped-gift','tap-prompt'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard()}}));
+</script>
+</body>
+</html>
